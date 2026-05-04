@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-inbox-table
+      author: azaliya
+      changes:
+        - createTable:
+            tableName: inbox
+            columns:
+              - column:
+                  name: event_id
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: created_at
+                  type: timestamp
+
+              - column:
+                  name: updated_at
+                  type: timestamp
+
+              - column:
+                  name: status
+                  type: varchar(30)
