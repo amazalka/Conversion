@@ -17,5 +17,5 @@ public class InboxEntity {
     public String eventId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private String status;
+    private InboxStatus status;
 }

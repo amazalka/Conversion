@@ -5,6 +5,7 @@ import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayInputStream;
@@ -15,12 +16,13 @@ import java.io.InputStream;
 @RequiredArgsConstructor
 public class MinioService {
     private final MinioClient minioClient;
-
+    @Value("${conversion.minio.bucket}")
+    private String bucket;
     public InputStream download(String path) {
         try {
             return minioClient.getObject(
                     GetObjectArgs.builder()
-                            .bucket("files")
+                            .bucket(bucket)
                             .object(path)
                             .build()
             );
@@ -34,7 +36,7 @@ public class MinioService {
             byte[] bytes = file.readAllBytes();
             minioClient.putObject(
                     PutObjectArgs.builder()
-                            .bucket("files")
+                            .bucket(bucket)
                             .object(path)
                             .stream(new ByteArrayInputStream(bytes), bytes.length, -1)
                             .contentType("application/pdf")

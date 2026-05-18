@@ -29,8 +29,9 @@ public class PNGToPDFConverter implements FileConverter {
             PDFdocument.add(image);
         } catch (Exception e) {
             throw new ImageConversionException("Failed to convert PNG to PDF", e);
+        } finally {
+            PDFdocument.close();
         }
-        PDFdocument.close();
         return new ByteArrayInputStream(out.toByteArray());
     }
 }

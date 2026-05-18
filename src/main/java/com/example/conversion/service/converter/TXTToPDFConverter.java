@@ -30,8 +30,9 @@ public class TXTToPDFConverter implements FileConverter {
             PDFdocument.add(new Paragraph(text)); // кладем текст как абзац
         } catch (IOException e) {
             throw new TextConversionException("Failed to convert TXT to PDF", e);
+        } finally {
+            PDFdocument.close();
         }
-        PDFdocument.close();
         return new ByteArrayInputStream(out.toByteArray()); //возвращаем InputStream (byte[] -> inputStream)
     }
 }

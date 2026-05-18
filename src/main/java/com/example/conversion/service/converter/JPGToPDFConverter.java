@@ -29,8 +29,9 @@ public class JPGToPDFConverter implements FileConverter {
             PDFdocument.add(image);
         } catch (Exception e) {
             throw new ImageConversionException("Failed to convert JPG to PDF", e);
+        } finally {
+            PDFdocument.close();
         }
-        PDFdocument.close();
         return new ByteArrayInputStream(out.toByteArray());
     }
 }

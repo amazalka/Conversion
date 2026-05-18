@@ -1,6 +1,7 @@
 package com.example.conversion.service.inbox;
 
 import com.example.conversion.model.InboxEntity;
+import com.example.conversion.model.InboxStatus;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,7 +21,7 @@ public class InboxService {
                     eventId,
                     LocalDateTime.now(),
                     LocalDateTime.now(),
-                    "PROCESSING"
+                    InboxStatus.PROCESSING
             ));
             return true;
         } catch (DataIntegrityViolationException e) {
@@ -30,7 +31,7 @@ public class InboxService {
 
     public void markProcessed(String eventId) {
         repository.findById(eventId).ifPresent(e -> {
-            e.setStatus("DONE");
+            e.setStatus(InboxStatus.DONE);
             e.setUpdatedAt(LocalDateTime.now());
             repository.save(e);
         });
@@ -38,7 +39,7 @@ public class InboxService {
 
     public void markFailed(String eventId) {
         repository.findById(eventId).ifPresent(e -> {
-            e.setStatus("FAILED");
+            e.setStatus(InboxStatus.FAILED);
             e.setUpdatedAt(LocalDateTime.now());
             repository.save(e);
         });

@@ -16,7 +16,7 @@ public class FileConsumer {
     private final InboxService inboxService;
     private final FileProducer fileProducer;
     //из топика input-topic получает путь и тип файла InputEvent
-    @KafkaListener(topics = "input-topic", groupId = "converter-group")
+    @KafkaListener(topics = "${conversion.kafka.topics.input}", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(InputEvent event) throws Exception {
         if (!inboxService.tryStart(event.getEventId())){
             return;
