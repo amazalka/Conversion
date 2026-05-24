@@ -1,0 +1,527 @@
+2026-05-24 19:21:17.071454+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:21:17.088352+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:21:57.581472+03:00 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Program Files/JetBrains/IntelliJ IDEA 2026.1.2/IdeaProjects/conversionn/data/testdb.mv.db [2.4.240/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Program Files/JetBrains/IntelliJ IDEA 2026.1.2/IdeaProjects/conversionn/data/testdb.mv.db [2.4.240/7]" [50000-240]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1675)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:502)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:296)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2164)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:328)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:350)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DataSourceConnectionProvider.getConnection(DataSourceConnectionProvider.java:137)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:508)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:48)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:366)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironment(JdbcEnvironmentInitiator.java:143)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:120)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:80)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:133)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:260)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:235)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:212)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:44)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:251)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:203)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:172)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1392)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.populateSessionFactoryBuilder(EntityManagerFactoryBuilderImpl.java:1472)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1454)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:93)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:443)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:436)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:411)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:419)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.example.conversion.ConversionApplication.main(ConversionApplication.java:12)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: Внутренняя ошибка: "org.h2.mvstore.MVStoreException: The file is locked: C:/Program Files/JetBrains/IntelliJ IDEA 2026.1.2/IdeaProjects/conversionn/data/testdb.mv.db [2.4.240/7]"
+General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Program Files/JetBrains/IntelliJ IDEA 2026.1.2/IdeaProjects/conversionn/data/testdb.mv.db [2.4.240/7]" [50000-240]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 62 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Program Files/JetBrains/IntelliJ IDEA 2026.1.2/IdeaProjects/conversionn/data/testdb.mv.db [2.4.240/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	... 56 more
+2026-05-24 19:21:59.651915+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:21:59.669363+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:04.673744+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:04.676757+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:09.683376+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:09.686391+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:14.692891+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:14.693907+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:19.697944+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:19.699945+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:24.701984+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:24.703701+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:29.706499+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:29.709162+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:34.711041+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:34.713037+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:39.716385+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:39.719155+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:44.728694+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:44.732369+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:49.744581+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:49.745587+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:54.751982+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:54.753046+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:22:59.768559+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:22:59.769570+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:04.785595+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:04.786573+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:09.798602+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:09.800611+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:14.808887+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:14.810895+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:26.465749+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:26.480656+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:31.486037+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:31.487900+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:36.491682+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:36.493192+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:23:41.496699+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:23:41.498838+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:24:44.277201+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:24:44.294128+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:40:08.160848+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:40:08.183984+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:19.252434+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:19.272031+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:24.287869+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:24.290385+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:29.297412+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:29.298412+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:34.303579+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:34.305606+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:39.321453+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:39.323478+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:44.332930+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:44.334939+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:49.340039+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:49.342143+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:42:54.350451+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:42:54.353041+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:10.816809+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:10.838885+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:26.414746+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:26.431008+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:31.434294+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:31.435802+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:36.438676+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:36.440710+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:41.443764+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:41.444765+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:46.449251+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:46.450785+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:51.454910+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:51.456991+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:43:56.459056+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:43:56.461095+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:18.658958+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:18.677161+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:23.690547+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:23.692074+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:28.700435+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:28.703444+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:33.711921+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:33.714937+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:38.726070+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:38.727072+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:43.730782+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:43.732789+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:48.745454+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:48.747563+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:53.758976+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:53.761039+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:44:58.772305+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:44:58.774342+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:03.776963+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:03.778970+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:08.794373+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:08.796383+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:13.811963+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:13.813558+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:18.829352+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:18.831903+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:23.848992+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:23.851009+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:28.854998+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:28.856779+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:33.873165+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:33.875671+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:38.883597+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:38.886124+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:43.896524+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:43.898523+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:48.912225+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:48.914353+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:53.930496+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:53.932537+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:45:58.944230+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:45:58.945887+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:03.958045+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:03.959053+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:08.971993+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:08.979540+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:13.995916+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:13.996917+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:19.010903+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:19.013440+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:24.021536+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:24.024090+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:29.031224+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:29.034237+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:34.039134+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:34.041133+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:39.051255+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:39.057770+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:44.063744+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:44.065770+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:49.080021+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:49.083031+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:54.086900+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:54.088921+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:46:59.093668+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:46:59.095700+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:47:04.107634+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:47:04.108630+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:47:09.110263+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:47:09.112820+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]
+2026-05-24 19:47:14.114819+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+INSERT INTO shedlock(name, lock_until, locked_at, locked_by) VALUES(?, ?, ?, ?) [42104-240]
+2026-05-24 19:47:14.116823+03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SHEDLOCK" not found (this database is empty); SQL statement:
+UPDATE shedlock SET lock_until = ?, locked_at = ?, locked_by = ? WHERE name = ? AND lock_until <= ? [42104-240]

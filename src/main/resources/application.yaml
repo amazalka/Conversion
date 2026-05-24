@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
-    username: sa
+    username: azaliya
     password:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -14,7 +14,7 @@ spring:
       enabled: true
   liquibase:
     enabled: true
-    change-log: classpath:db/changelog/db.changelog-inbox.yaml
+    change-log: classpath:db/changelog/master.yaml
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -41,3 +41,5 @@ conversion:
       output: output-topic
   minio:
     bucket: files
+  shedlock:
+    outbox-relay-name: outbox_relay

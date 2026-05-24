@@ -14,8 +14,9 @@ import java.time.LocalDateTime;
 public class InboxEntity {
     @Id
     @Column(name = "event_id")
-    public String eventId;
+    private String eventId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Enumerated(EnumType.STRING)
     private InboxStatus status;
 }
