@@ -1,5 +1,6 @@
 package com.example.conversion.kafka.consumer;
 
+import jakarta.transaction.Transactional;
 import com.example.conversion.model.EventType;
 import com.example.conversion.model.InputEvent;
 import com.example.conversion.model.OutputEvent;
@@ -17,6 +18,7 @@ public class FileConsumer {
     private final InboxService inboxService;
     private final OutboxService outboxService;
     //из топика input-topic получает путь и тип файла InputEvent
+    @Transactional
     @KafkaListener(topics = "${conversion.kafka.topics.input}", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(InputEvent event) throws Exception {
         if (!inboxService.tryStart(event.getEventId())){

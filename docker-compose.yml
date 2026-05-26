@@ -28,3 +28,13 @@ services:
     environment:
       MINIO_ROOT_USER: azaliya
       MINIO_ROOT_PASSWORD: azaliya123
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_DB: conversion
+      POSTGRES_USER: azaliya
+      POSTGRES_PASSWORD: azaliya
+    ports:
+      - "5432:5432"

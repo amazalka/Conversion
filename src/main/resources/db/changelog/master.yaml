@@ -1,9 +1,7 @@
 databaseChangeLog:
   - include:
-      file: resources/db/changelog/inbox.yaml
-
+      file: db/changelog/inbox.yaml
   - include:
-      file: resources/db/changelog/outbox.yaml
-
+      file: db/changelog/shedlock.yaml
   - include:
-      file: resources/db/changelog/shedlock.yaml
+      file: db/changelog/outbox.yaml

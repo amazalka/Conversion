@@ -10,11 +10,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class InboxService {
     private final InboxRepository repository;
-
+    @Transactional
     public boolean tryStart(String eventId) {
         try {
             repository.save(new InboxEntity(
@@ -28,7 +27,7 @@ public class InboxService {
             return false;
         }
     }
-
+    @Transactional
     public void markProcessed(String eventId) {
         repository.findById(eventId).ifPresent(e -> {
             e.setStatus(InboxStatus.DONE);
@@ -36,7 +35,7 @@ public class InboxService {
             repository.save(e);
         });
     }
-
+    @Transactional
     public void markFailed(String eventId) {
         repository.findById(eventId).ifPresent(e -> {
             e.setStatus(InboxStatus.FAILED);
