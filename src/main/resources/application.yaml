@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: conversion-service
   datasource:
     url: jdbc:postgresql://localhost:5432/conversion
     username: azaliya
@@ -41,3 +43,10 @@ conversion:
     bucket: files
   shedlock:
     outbox-relay-name: outbox_relay
+server:
+  port: 0
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+

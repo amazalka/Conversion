@@ -1,9 +1,8 @@
-package com.example.conversion.service.outbox.scheduler;
+package com.example.conversion.service.outbox;
 
 import com.example.conversion.kafka.producer.FileProducer;
 import com.example.conversion.model.OutboxEvent;
 import com.example.conversion.model.OutputEvent;
-import com.example.conversion.service.outbox.OutboxService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;

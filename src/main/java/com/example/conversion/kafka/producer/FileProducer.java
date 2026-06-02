@@ -15,8 +15,9 @@ public class FileProducer {
     private final KafkaTemplate<Object, Object> kafkaTemplate;
     @Value("${conversion.kafka.topics.output}")
     private String topic;
+
     //отправляет в топик output-topic путь файла OutputEvent
-    public CompletableFuture<SendResult<Object, Object>> send(OutputEvent event){
+    public CompletableFuture<SendResult<Object, Object>> send(OutputEvent event) {
         return kafkaTemplate.send(topic, event);
     }
 }

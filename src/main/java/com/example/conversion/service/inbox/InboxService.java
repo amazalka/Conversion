@@ -2,10 +2,11 @@ package com.example.conversion.service.inbox;
 
 import com.example.conversion.model.InboxEntity;
 import com.example.conversion.model.InboxStatus;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 import java.time.LocalDateTime;
 
@@ -35,7 +36,7 @@ public class InboxService {
             repository.save(e);
         });
     }
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void markFailed(String eventId) {
         repository.findById(eventId).ifPresent(e -> {
             e.setStatus(InboxStatus.FAILED);
