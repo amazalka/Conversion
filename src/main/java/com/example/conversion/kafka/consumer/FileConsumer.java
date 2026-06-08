@@ -1,5 +1,6 @@
 package com.example.conversion.kafka.consumer;
 
+import com.example.conversion.model.EventStatus;
 import jakarta.transaction.Transactional;
 import com.example.conversion.model.EventType;
 import com.example.conversion.model.InputEvent;
@@ -26,12 +27,13 @@ public class FileConsumer {
         }
         try {
             String outputPath = conversionService.convert(event);
-            OutputEvent outputEvent = new OutputEvent(event.getEventId(), outputPath);
+            OutputEvent outputEvent = new OutputEvent(event.getEventId(), outputPath, EventStatus.SUCCESS);
             outboxService.saveEvent(EventType.FILE_CONVERTED, outputEvent);
             inboxService.markProcessed(event.getEventId());
         } catch (Exception e) {
             inboxService.markFailed(event.getEventId());
-            throw e;
+            OutputEvent outputEvent = new OutputEvent(event.getEventId(), null, EventStatus.ERROR);
+            outboxService.saveEvent(EventType.FILE_CONVERSION_FAILED , outputEvent);
         }
     }
 }

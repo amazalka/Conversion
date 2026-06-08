@@ -8,4 +8,5 @@ import lombok.*;
 public class OutputEvent {
     private String eventId;
     private String filePath;
+    private EventStatus status;
 }

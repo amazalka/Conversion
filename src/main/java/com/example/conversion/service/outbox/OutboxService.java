@@ -1,6 +1,7 @@
 package com.example.conversion.service.outbox;
 
 import com.example.conversion.exception.SaveOutboxException;
+import com.example.conversion.model.EventStatus;
 import com.example.conversion.model.EventType;
 import com.example.conversion.model.OutboxEvent;
 import lombok.*;
