@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/inbox.yaml
+  - include:
+      file: db/changelog/shedlock.yaml
+  - include:
+      file: db/changelog/outbox.yaml
